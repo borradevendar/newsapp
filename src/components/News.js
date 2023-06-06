@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Newsitem from './Newsitem';
+ import React, { Component } from 'react';
+ import Newsitem from './Newsitem';
 
 export class News extends Component {
 
@@ -12,19 +12,9 @@ export class News extends Component {
   }
   async componentDidMount() {
     let url = "https://newsapi.org/v2/everything?q=bitcoin&apiKey=94fb045e895244aba2a43e406006d8cb";
-    // let data = await fetch(url);
-    // let parsedData = await data.json();
-    // this.setState({ articles: parsedData.articles, loading:false });
-    try {
-      let response = await fetch(url);
-      if (!response.ok) {
-        throw new Error('Failed to fetch news data');
-      }
-      let data = await response.json();
-      this.setState({ articles: data.articles, loading: false });
-    } catch (error) {
-      console.error(error);
-    }
+    let data = await fetch(url);
+    let parsedData = await data.json();
+    this.setState({ articles: parsedData.articles, loading:false });
 
   }
 
@@ -49,3 +39,5 @@ export class News extends Component {
 }
 
 export default News;
+
+
